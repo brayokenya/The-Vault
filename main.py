@@ -1,16 +1,13 @@
-# Create account class
-class Account:
-    def __init__(self, service_provider, username, password):
-        self.service_provider = service_provider
-        self.username = username
-        self.password = password
+
+
 # menu
+from user import User
 
 
 def menu():
     print("Please select an Option")
     print("\tWelcome To The Vault")
-    print("1. Store account credentials")
+    print("1. Store User credentials")
     print("2. Password Generator ")
     print("3. Exit")
 # password generator
@@ -30,7 +27,7 @@ def store_accounts():
         username = input("Enter the username: ")
         password = input("Enter the password: ")
         # create instance of Account class
-        account = Account(service_provider, username, password)
+        account = User(service_provider, username, password)
         accounts.append(account)
     # output
     for i in accounts:
