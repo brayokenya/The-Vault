@@ -1,11 +1,14 @@
 
-
 # menu
+import random
+import pyperclip
 from user import User
+from credential import Credential
 
 
 def menu():
-    print("Please select an Option")
+    print("="*35)
+    print("\nPlease select an Option")
     print("\tWelcome To The Vault")
     print("1. Store User credentials")
     print("2. Password Generator ")
@@ -14,27 +17,42 @@ def menu():
 
 
 def password_generator():
-    pass
+    characters = 'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()'
+    number_of_passwords = int(
+        input("\nHow many passwords would you like? :"))
+    length_of_password = int(input("\nLength of password? :"))
+
+    for p in range(number_of_passwords):
+        password = ''
+        for c in range(length_of_password):
+            password += random.choice(characters)
+        pyperclip.copy(password)
+        password = pyperclip.paste()
+        print(password)
 
 
 def store_accounts():
-    no_of_accounts = int(input("How many accounts would you like to enter? "))
+    # list to hold user input
+    credentials = []
+    no_of_accounts = int(
+        input("How many accounts would you like to enter? "))
     # input account credentials
     for n in range(no_of_accounts):
-        # list to hold user input
-        accounts = []
+
         service_provider = input("\nEnter the service provider: ")
         username = input("Enter the username: ")
         password = input("Enter the password: ")
-        # create instance of Account class
-        account = User(service_provider, username, password)
-        accounts.append(account)
+        # create instance of Credential  class
+        credential = Credential(service_provider, username, password)
+        credentials.append(credential)
+
     # output
-    for i in accounts:
+    print("\nYour credential credentials have been stored")
+    print("="*15)
+    for credential in credentials:
         print("\nService: {}, Username: {},Password:{}".format(
-            account.service_provider, account.username, account.password))
-        print("\nYour account credentials have been stored")
-        print("="*15)
+            credential.service_provider, credential.username, credential.password))
+        # print("\nYour credential credentials have been stored")
 
 
 # no of accounts
