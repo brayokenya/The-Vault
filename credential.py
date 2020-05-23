@@ -14,4 +14,5 @@ class Credential:
         """
         This method saves user objects to the users list
         """
+        self.new_credential.save_credential()
         Credential.credentials.append(self)
