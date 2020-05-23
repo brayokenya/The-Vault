@@ -4,6 +4,7 @@ import random
 import pyperclip
 from user import User
 from credential import Credential
+import login
 
 
 def menu():
@@ -13,6 +14,7 @@ def menu():
     print("1. Store User credentials")
     print("2. Password Generator ")
     print("3. Exit")
+
 # password generator
 
 
@@ -52,7 +54,6 @@ def store_accounts():
     for credential in credentials:
         print("\nService: {}, Username: {},Password:{}".format(
             credential.service_provider, credential.username, credential.password))
-        # print("\nYour credential credentials have been stored")
 
 
 # no of accounts
